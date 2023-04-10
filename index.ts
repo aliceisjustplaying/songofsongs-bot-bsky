@@ -24,11 +24,10 @@ if (possibleOutput.length === 0) {
 }
 const post = possibleOutput[Math.floor(Math.random() * possibleOutput.length)];
 
-console.log(post);
-// await agent.post({
-//   $type: 'app.bsky.feed.post',
-//   text: post,
-//   createdAt: new Date().toISOString(),
-// });
+await agent.post({
+  $type: 'app.bsky.feed.post',
+  text: post,
+  createdAt: new Date().toISOString(),
+});
 
 fs.appendFileSync('posted.txt', post + '\n');
