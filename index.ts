@@ -15,14 +15,14 @@ await agent.login({
 });
 
 const lines = fs.readFileSync('songofsongs.txt', 'utf8').split('\n');
-const already_posted = fs.readFileSync('posted.txt', 'utf8').split('\n');
-let possible_output = lines.filter((line) => !already_posted.includes(line));
-if (possible_output.length === 0) {
+const alreadyPosted = fs.readFileSync('posted.txt', 'utf8').split('\n');
+let possibleOutput = lines.filter((line) => !alreadyPosted.includes(line));
+if (possibleOutput.length === 0) {
   fs.rmSync('posted.txt');
-  possible_output = lines;
+  possibleOutput = lines;
   fs.appendFileSync('posted.txt', '\n');
 }
-const post = possible_output[Math.floor(Math.random() * possible_output.length)];
+const post = possibleOutput[Math.floor(Math.random() * possibleOutput.length)];
 
 console.log(post);
 // await agent.post({
